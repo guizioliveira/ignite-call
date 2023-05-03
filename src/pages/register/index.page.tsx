@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { Container, Form, FormError, Header } from './styles'
 import {
   Button,
@@ -31,10 +32,19 @@ export default function Register() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerFormSchema),
   })
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (router.query.username) {
+      setValue('username', String(router.query.username))
+    }
+  }, [router.query?.username, setValue])
 
   async function handleRegister(data: RegisterFormData) {
     console.log(data)
