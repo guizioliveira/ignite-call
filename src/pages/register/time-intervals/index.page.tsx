@@ -21,6 +21,7 @@ import {
 import { ArrowRight } from 'phosphor-react'
 import { Container, Header } from '../styles'
 import { convertTimeStringToMinutes } from '@/utils/convert-time-string-to-minutes'
+import { api } from '@/lib/axios'
 
 const timeIntervalsFormSchema = z.object({
   intervals: z
@@ -95,7 +96,7 @@ export default function TimeIntervals() {
   const intervals = watch('intervals')
 
   async function handleSetTimeIntervals(data: TimeIntervalsFormOutput) {
-    console.log(data)
+    await api.post('/users/time-intervals', data)
   }
 
   return (
