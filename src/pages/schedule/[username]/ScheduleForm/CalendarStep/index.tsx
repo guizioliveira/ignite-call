@@ -58,19 +58,19 @@ export function CalendarStep() {
         <TimePicker>
           <TimePickerHeader>
             {weekDay} <span>{describedDate}</span>
-            <TimePickerList>
-              {availability?.possibleTimes.map((hour) => {
-                return (
-                  <TimePickerItem
-                    key={hour}
-                    disabled={!availability.availableTimes.includes(hour)}
-                  >
-                    {String(hour).padStart(2, '0')}:00h
-                  </TimePickerItem>
-                )
-              })}
-            </TimePickerList>
           </TimePickerHeader>
+          <TimePickerList>
+            {availability?.possibleTimes.map((hour) => {
+              return (
+                <TimePickerItem
+                  key={hour}
+                  disabled={!availability.availableTimes.includes(hour)}
+                >
+                  {String(hour).padStart(2, '0')}:00h
+                </TimePickerItem>
+              )
+            })}
+          </TimePickerList>
         </TimePicker>
       )}
     </Container>
