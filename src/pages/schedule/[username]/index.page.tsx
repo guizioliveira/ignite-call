@@ -1,3 +1,4 @@
+import { NextSeo } from 'next-seo'
 import { Avatar, Heading, Text } from '@guizioliveira/ignite-ui-react'
 import { Container, UserHeader } from './styles'
 import { GetStaticPaths, GetStaticProps } from 'next'
@@ -14,14 +15,20 @@ interface ScheduleProps {
 
 export default function Schedule({ user }: ScheduleProps) {
   return (
-    <Container>
-      <UserHeader>
-        <Avatar src={user.avatarUrl} />
-        <Heading>{user.name}</Heading>
-        <Text>{user.bio}</Text>
-      </UserHeader>
-      <ScheduleForm />
-    </Container>
+    <>
+      <NextSeo
+        title={`Agendar com ${user.name} | Ignite Call by guizioliveira`}
+      />
+
+      <Container>
+        <UserHeader>
+          <Avatar src={user.avatarUrl} />
+          <Heading>{user.name}</Heading>
+          <Text>{user.bio}</Text>
+        </UserHeader>
+        <ScheduleForm />
+      </Container>
+    </>
   )
 }
 
